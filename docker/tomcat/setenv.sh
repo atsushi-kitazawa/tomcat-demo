@@ -1,0 +1,1 @@
+CATALINA_OPTS="-Dkey1=value1 -Dkey2=value2 -Dkey3=value3"
