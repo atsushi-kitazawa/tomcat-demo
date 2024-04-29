@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  tomcat:
+    container_name: tomcat-demo
+    build:
+      context: .
+      dockerfile: ./tomcat/Dockerfile
+    ports:
+      - 8080:8080
+  postgres:
+    container_name: postgres-demo
+    build:
+      context: .
+      dockerfile: ./postgresql/Dockerfile
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+volumes:
+  db-store:
